@@ -1,129 +1,71 @@
-# Otopark Yönetim Sistemi
+# Parking Management System
 
-Bu proje, basit bir otopark yönetim sistemi uygulamasıdır. Uygulama, araçların plakalarını kaydetmek, silmek ve mevcut park yerlerinin sayısını takip etmek için kullanılır. Uygulama hem backend (Java Spring Boot) hem de frontend (React.js) kısmından oluşmaktadır.
+The Parking Management System is designed to efficiently manage vehicle entries and exits in a parking lot. Developed using Java with Spring Boot for the backend and React.js for the frontend, this system tracks the number of available slots, prevents duplicate entries, and ensures seamless parking operations.
 
-## İçindekiler
+## Technologies Used
 
-1. [Özellikler](#özellikler)
-2. [Gereksinimler](#gereksinimler)
-3. [Kurulum](#kurulum)
-4. [Kullanım](#kullanım)
-5. [API Endpoints](#api-endpoints)
-6. [Önyüz Kullanımı](#önyüz-kullanımı)
+- **Backend:** Java, Spring Boot, MySQL
+- **Frontend:** React.js
 
-## Özellikler
+## Features
 
-- Araç ekleme ve silme
-- Mevcut araçları listeleme
-- Boş park yerlerini gösterme
-- Aynı plakanın tekrar eklenmesini önleme
-- Küçük harflerle girilen plakaları otomatik olarak büyük harfe çevirme
+- Add new vehicle entries
+- Remove vehicle entries
+- List all vehicles
+- Check available parking slots
+- Automatically convert plate numbers to uppercase
+- Validate for duplicate plate numbers
 
-## Gereksinimler
-
-### Backend için:
-- Java JDK 17+
-- Maven 3.6+
-- MySQL veritabanı
-
-### Frontend için:
-- Node.js 14+
-- npm 6+
-
-## Kurulum
+## Installation and Setup
 
 ### Backend
 
-1. Projeyi klonlayın:
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/unknown1fsh/parking-management-system.git
+   cd parking-management-system
+   ```
 
-    ```sh
-    git clone https://github.com/yourusername/parking-management-system.git
-    cd parking-management-system
-    ```
+2. **Configure MySQL Database:**
+   - Create a MySQL database named `otopark`.
+   - Update the `src/main/resources/application.properties` file with your MySQL username and password.
 
-2. `application.properties` dosyasını yapılandırın:
-
-    ```properties
-    spring.datasource.url=jdbc:mysql://localhost:3306/otopark
-    spring.datasource.username=root
-    spring.datasource.password=12345
-    spring.jpa.hibernate.ddl-auto=update
-    spring.jpa.show-sql=true
-    spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL5Dialect
-    ```
-
-3. MySQL veritabanınızı oluşturun:
-
-    ```sql
-    CREATE DATABASE otopark;
-    ```
-
-4. Maven bağımlılıklarını yükleyin ve projeyi çalıştırın:
-
-    ```sh
-    ./mvnw clean install
-    ./mvnw spring-boot:run
-    ```
+3. **Run the Spring Boot application:**
+   ```bash
+   ./mvnw spring-boot:run
+   ```
 
 ### Frontend
 
-1. Projeyi klonlayın (eğer klonlamadıysanız):
+1. **Clone the React repository:**
+   ```bash
+   git clone https://github.com/unknown1fsh/parking-management-system-react.git
+   cd parking-management-system-react
+   ```
 
-    ```sh
-    git clone https://github.com/yourusername/parking-management-system.git
-    cd parking-management-system/otopark-frontend
-    ```
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-2. Bağımlılıkları yükleyin:
+3. **Start the React application:**
+   ```bash
+   npm start
+   ```
 
-    ```sh
-    npm install
-    ```
+## Usage
 
-3. Uygulamayı başlatın:
+- Open your browser and navigate to `http://localhost:3000` to access the frontend.
+- Use the interface to add, remove, list vehicles, and check available slots.
 
-    ```sh
-    npm start
-    ```
+## License
 
-## Kullanım
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-### Backend
+## Contributions
 
-Backend uygulaması varsayılan olarak `http://localhost:8087` adresinde çalışır. 
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-### Frontend
+## Acknowledgements
 
-Frontend uygulaması varsayılan olarak `http://localhost:3000` adresinde çalışır. 
-
-### API Endpoints
-
-- `POST /api/cars` - Yeni araç ekler.
-    - İstek Gövdesi: `{ "plateNumber": "34ABC34" }`
-    - Yanıt: `Plaka başarıyla eklendi. Kapasite durumu: X`
-
-- `DELETE /api/cars/{plateNumber}` - Belirtilen plakaya sahip aracı siler.
-    - Yanıt: `Plaka başarıyla silindi. Kapasite durumu: X`
-
-- `GET /api/cars` - Tüm araçları listeler.
-    - Yanıt: `[{"id":1,"plateNumber":"34ABC34"}, ...]`
-
-- `GET /api/cars/available-slots` - Boş park yerlerini döner.
-    - Yanıt: `{ "availableSlots": X }`
-
-## Önyüz Kullanımı
-
-1. **Araç Ekle**: Plaka numarasını girin ve "Ekle" butonuna tıklayın.
-2. **Araç Sil**: Plaka numarasını girin ve "Sil" butonuna tıklayın.
-3. **Tüm Araçlar**: Kayıtlı tüm araçları listelemek için "Tüm Araçlar" butonuna tıklayın.
-4. **Boş Yerler**: Mevcut boş park yerlerini görmek için "Boş Yerler" butonuna tıklayın.
-
-### Notlar
-
-- Plaka numaraları büyük harflerle kaydedilir.
-- Aynı plaka numarası ile araç eklenmeye çalışıldığında hata mesajı görüntülenir.
-- Silinmek istenen plaka bulunamazsa hata mesajı görüntülenir.
-
-## Lisans
-
-Bu proje MIT Lisansı ile lisanslanmıştır. Daha fazla bilgi için `LICENSE` dosyasına bakın.
+Special thanks to all the open-source contributors who helped in making this project possible.
